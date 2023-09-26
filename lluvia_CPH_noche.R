@@ -313,10 +313,13 @@ estadisticos<-function(lluvia,zona_num){
   vals<-getValues(pptz1)
   
   prom<-mean(vals,na.rm=TRUE)
+  mediana<-median(vals,na.rm = TRUE)
   minimo<-min(vals,na.rm=TRUE)
   maximo<-max(vals,na.rm=TRUE)
+  promedio_alto<-(prom+maximo)/2
+  percentiles<-quantile(vals, probs = c(0.25,0.75), na.rm = TRUE)
   
-  resultados<-c(prom,minimo,maximo)
+  resultados<-c(minimo,maximo,prom,mediana,promedio_alto,percentiles)
   
   return(resultados)
 }
@@ -347,7 +350,7 @@ lluvia_madrugada_zona9<-estadisticos(lluvia_madrugada_d1,9)
 #------------------------------------------------------------------------------------------------------------->
 
 #------------------------------------------------------------------------------------------------------------->
-titulos<-c("Id Zona","Promedio", "Minimo", "Maximo")
+titulos<-c("Id Zona","Minimo","Maximo","Promedio", "Mediana", "Promedio Alto","P25","P75")
 nom_zonas<-c("Zona1","Zona2","Zona3","Zona4","Zona5","Zona6","Zona7","Zona8","Zona9")
 #------------------------------------------------------------------------------------------------------------->
 
